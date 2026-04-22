@@ -1,0 +1,107 @@
+<main class="dashboard-wrapper">
+  <div class="welcome-banner">
+    <div class="banner-content">
+      <div class="banner-left">
+        <div class="banner-avatar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <p class="banner-greeting">Panel de Control</p>
+          <h1 class="welcome-title">Control Escolar</h1>
+          <p class="welcome-subtitle">Resumen del estado actual de la institución.</p>
+          <div class="banner-chips">
+            <span class="chip chip-blue">Ciclo Escolar 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="banner-right">
+        <div class="banner-stat-mini">
+          <span class="mini-value">1,245</span>
+          <span class="mini-label">Alumnos</span>
+        </div>
+        <div class="banner-divider"></div>
+        <div class="banner-stat-mini">
+          <span class="mini-value">20</span>
+          <span class="mini-label">Materias</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stat Cards -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon" style="background-color:#dbeafe;color:#1e40af">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="stat-info">
+        <div class="stat-value">1,245</div>
+        <div class="stat-label">Total Alumnos</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background-color:#d1fae5;color:#065f46">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+      </div>
+      <div class="stat-info">
+        <div class="stat-value">42</div>
+        <div class="stat-label">Materias Activas</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background-color:#ede9fe;color:#5b21b6">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="stat-info">
+        <div class="stat-value">8</div>
+        <div class="stat-label">Semestres Totales</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Row 1 -->
+  <div class="charts-grid-2">
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h3 class="chart-title">Alumnos por Semestre</h3>
+        <span class="chart-badge blue">Distribución</span>
+      </div>
+      <div class="chart-area">
+        <canvas #alumnosPorSemestreChart></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h3 class="chart-title">Materias por Créditos</h3>
+        <span class="chart-badge green">Proporción</span>
+      </div>
+      <div class="chart-area chart-area-sm">
+        <canvas #materiasPorCreditosChart></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Row 2 -->
+  <div class="charts-grid-2">
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h3 class="chart-title">Análisis de Semestres</h3>
+        <span class="chart-badge purple">Datos</span>
+      </div>
+      <div class="chart-area">
+        <canvas #docentesPorMateriaChart></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h3 class="chart-title">Nuevos Alumnos por Año</h3>
+        <span class="chart-badge green">Tendencia</span>
+      </div>
+      <div class="chart-area">
+        <canvas #alumnosIngresoPorAnioChart></canvas>
+      </div>
+    </div>
+  </div>
+</main>

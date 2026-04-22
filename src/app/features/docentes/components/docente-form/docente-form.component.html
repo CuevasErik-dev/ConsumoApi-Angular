@@ -1,0 +1,56 @@
+<div class="form-card">
+  <div class="form-header">AGREGAR NUEVO DOCENTE</div>
+  <div class="form-body">
+    <form [formGroup]="form" (ngSubmit)="guardar()" novalidate>
+
+      <div class="form-section">
+        <label class="section-title">Detalles del Docente:</label>
+
+
+        <!-- Nombre y Apellido -->
+        <div class="grid-2-col mb-4">
+          <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" formControlName="nombre" class="form-control"
+              [class.is-invalid]="submitted && f['nombre'].errors"
+              placeholder="ej. Ricardo"
+              (input)="filtrarSoloLetras('nombre', 15)">
+            <div class="error-msg" *ngIf="submitted && f['nombre'].errors">
+              <span *ngIf="f['nombre'].errors['required']">El nombre es obligatorio.</span>
+              <span *ngIf="f['nombre'].errors['pattern']">Solo se permiten letras.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Apellido:</label>
+            <input type="text" formControlName="apellido" class="form-control"
+              [class.is-invalid]="submitted && f['apellido'].errors"
+              placeholder="ej. Pineda"
+              (input)="filtrarSoloLetras('apellido', 20)">
+            <div class="error-msg" *ngIf="submitted && f['apellido'].errors">
+              <span *ngIf="f['apellido'].errors['required']">El apellido es obligatorio.</span>
+              <span *ngIf="f['apellido'].errors['pattern']">Solo se permiten letras.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Materia que imparte -->
+        <div class="form-group">
+          <label>Materia que Imparte:</label>
+          <input type="text" formControlName="materia" class="form-control"
+            [class.is-invalid]="submitted && f['materia'].errors"
+            placeholder="ej. Base de Datos"
+            (input)="filtrarTextoLibre('materia', 20)">
+          <div class="error-msg" *ngIf="submitted && f['materia'].errors">
+            <span *ngIf="f['materia'].errors['required']">La materia es obligatoria.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar Docente</button>
+      </div>
+
+    </form>
+  </div>
+</div>

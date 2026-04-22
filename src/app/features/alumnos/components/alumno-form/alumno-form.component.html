@@ -1,0 +1,100 @@
+<div class="form-card">
+  <div class="form-header">AGREGAR NUEVO ALUMNO</div>
+  <div class="form-body">
+    <form [formGroup]="form" (ngSubmit)="guardar()" novalidate>
+
+      <!-- Imagen de Perfil -->
+      <div class="form-section">
+        <label class="section-title">Imagen de Perfil:</label>
+        <div class="upload-container">
+          <div class="upload-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <div class="form-group flex-1">
+            <label>Enlace (URL) de la imagen:</label>
+            <input type="url" formControlName="imageUrl" class="form-control" placeholder="https://ejemplo.com/foto.jpg">
+          </div>
+        </div>
+      </div>
+
+      <!-- Información Personal -->
+      <div class="form-section">
+        <label class="section-title">Información Personal:</label>
+        <div class="grid-2-col">
+          <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" formControlName="nombre" class="form-control"
+              [class.is-invalid]="submitted && f['nombre'].errors"
+              placeholder="ej. Juan"
+              (input)="filtrarSoloLetras('nombre', 10)">
+            <div class="error-msg" *ngIf="submitted && f['nombre'].errors">
+              <span *ngIf="f['nombre'].errors['required']">El nombre es obligatorio.</span>
+              <span *ngIf="f['nombre'].errors['pattern']">Solo se permiten letras.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Apellido:</label>
+            <input type="text" formControlName="apellido" class="form-control"
+              [class.is-invalid]="submitted && f['apellido'].errors"
+              placeholder="ej. Pérez"
+              (input)="filtrarSoloLetras('apellido', 20)">
+            <div class="error-msg" *ngIf="submitted && f['apellido'].errors">
+              <span *ngIf="f['apellido'].errors['required']">El apellido es obligatorio.</span>
+              <span *ngIf="f['apellido'].errors['pattern']">Solo se permiten letras.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Datos de Contacto -->
+      <div class="form-section">
+        <label class="section-title">Datos de Contacto:</label>
+        <div class="grid-2-col">
+          <div class="form-group">
+            <label>Correo Electrónico:</label>
+            <input type="email" formControlName="correo" class="form-control"
+              [class.is-invalid]="submitted && f['correo'].errors"
+              placeholder="ej. juan@email.com">
+            <div class="error-msg" *ngIf="submitted && f['correo'].errors">
+              <span *ngIf="f['correo'].errors['required']">El correo es obligatorio.</span>
+              <span *ngIf="f['correo'].errors['email']">Debe incluir @ y ser válido.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Teléfono:</label>
+            <input type="text" formControlName="telefono" class="form-control"
+              [class.is-invalid]="submitted && f['telefono'].errors"
+              placeholder="ej. 2221234567"
+              (input)="filtrarSoloNumeros('telefono', 10)">
+            <div class="error-msg" *ngIf="submitted && f['telefono'].errors">
+              <span *ngIf="f['telefono'].errors['required']">El teléfono es obligatorio.</span>
+              <span *ngIf="f['telefono'].errors['pattern']">Debe tener exactamente 10 dígitos.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Número de Control -->
+      <div class="form-section">
+        <label class="section-title">Número de Control:</label>
+        <div class="form-group">
+          <input type="text" formControlName="numeroControl" class="form-control"
+            [class.is-invalid]="submitted && f['numeroControl'].errors"
+            placeholder="ej. 22620050"
+            (input)="filtrarSoloNumeros('numeroControl', 8)">
+          <div class="error-msg" *ngIf="submitted && f['numeroControl'].errors">
+            <span *ngIf="f['numeroControl'].errors['required']">El número de control es obligatorio.</span>
+            <span *ngIf="f['numeroControl'].errors['pattern']">Debe tener exactamente 8 dígitos numéricos.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acciones -->
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar Alumno</button>
+      </div>
+
+    </form>
+  </div>
+</div>

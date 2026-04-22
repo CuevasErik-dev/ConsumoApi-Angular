@@ -1,20 +1,14 @@
-.app-layout {
+.dashboard-layout {
   min-height: 100vh;
   background-color: #f4f7fb;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
 }
 
-/* Header Styles */
 .top-navbar {
   background-color: #0b1c3e;
   color: white;
   padding: 0 40px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 50;
 }
 
 .navbar-content {
@@ -43,6 +37,11 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+.logo-materia {
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
 }
 
 .brand-text {
@@ -86,7 +85,23 @@
   opacity: 0.8;
 }
 
+.main-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
 @media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
   .brand {
     padding-right: 20px;
   }
@@ -113,5 +128,8 @@
   .main-nav {
     flex-wrap: wrap;
     justify-content: center;
+  }
+  .main-container {
+    padding: 20px;
   }
 }

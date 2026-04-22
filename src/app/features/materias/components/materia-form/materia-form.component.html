@@ -1,0 +1,61 @@
+<div class="form-card">
+  <div class="form-header">AGREGAR NUEVA MATERIA</div>
+  <div class="form-body">
+    <form [formGroup]="form" (ngSubmit)="guardar()" novalidate>
+
+      <div class="form-section">
+        <label class="section-title">Detalles de la Materia:</label>
+
+        <div class="form-group mb-4">
+          <label>Nombre de la Materia:</label>
+          <input type="text" formControlName="nombre" class="form-control"
+            [class.is-invalid]="submitted && f['nombre'].errors"
+            placeholder="ej. Matemáticas Discretas"
+            (input)="filtrarSoloLetras('nombre', 20)">
+          <div class="error-msg" *ngIf="submitted && f['nombre'].errors">
+            <span *ngIf="f['nombre'].errors['required']">El nombre es obligatorio.</span>
+            <span *ngIf="f['nombre'].errors['pattern']">Solo se permiten letras.</span>
+          </div>
+        </div>
+
+        <div class="grid-2-col">
+          <div class="form-group">
+            <label>Créditos:</label>
+            <input type="text" formControlName="creditos" class="form-control"
+              [class.is-invalid]="submitted && f['creditos'].errors"
+              placeholder="ej. 5"
+              (input)="filtrarUnDigito('creditos')">
+            <div class="error-msg" *ngIf="submitted && f['creditos'].errors">
+              <span *ngIf="f['creditos'].errors['required']">Los créditos son obligatorios.</span>
+              <span *ngIf="f['creditos'].errors['pattern']">Debe ser un solo número del 1 al 9.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Semestre:</label>
+            <select formControlName="semestre" class="form-control select-dropdown"
+              [class.is-invalid]="submitted && f['semestre'].errors">
+              <option value="" disabled>Seleccione un semestre</option>
+              <option value="1">Primer Semestre</option>
+              <option value="2">Segundo Semestre</option>
+              <option value="3">Tercer Semestre</option>
+              <option value="4">Cuarto Semestre</option>
+              <option value="5">Quinto Semestre</option>
+              <option value="6">Sexto Semestre</option>
+              <option value="7">Séptimo Semestre</option>
+              <option value="8">Octavo Semestre</option>
+            </select>
+            <div class="error-msg" *ngIf="submitted && f['semestre'].errors">
+              <span>Seleccione un semestre.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar Materia</button>
+      </div>
+
+    </form>
+  </div>
+</div>

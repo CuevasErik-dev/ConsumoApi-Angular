@@ -1,0 +1,30 @@
+<div class="form-card">
+  <div class="form-header">AGREGAR NUEVO SEMESTRE</div>
+  <div class="form-body">
+    <form [formGroup]="form" (ngSubmit)="guardar()" novalidate>
+
+      <div class="form-section">
+        <label class="section-title">Detalles del Semestre:</label>
+
+        <!-- Nombre del Semestre -->
+        <div class="form-group">
+          <label>Nombre del Semestre:</label>
+          <input type="text" formControlName="nombre" class="form-control"
+            [class.is-invalid]="submitted && f['nombre'].errors"
+            placeholder="ej. Primer Semestre 2024"
+            (input)="filtrarTextoLibre('nombre', 50)">
+          <div class="error-msg" *ngIf="submitted && f['nombre'].errors">
+            <span *ngIf="f['nombre'].errors['required']">El nombre del semestre es obligatorio.</span>
+            <span *ngIf="f['nombre'].errors['pattern']">Solo se permiten letras, números y espacios.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar Semestre</button>
+      </div>
+
+    </form>
+  </div>
+</div>
